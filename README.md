@@ -6,7 +6,7 @@ In the 'results' folder, you will find a number of tabulated results. Each file 
 
 Each data file contains 4 columns:
 
-| v [km/s]   | f(v) [s/km]    | f(v) - f\_A(v) [s/km]  | f\_D(v) [s/km] |
+| v [km/s]   | f(v) [s/km]    | f\_A(v) - f(v) [s/km]  | f\_D(v) [s/km] |
 | --- | --- | --- | --- |
 
 Here, f(v) is the free (unperturbed) speed distribution, f\_A(v) is the speed distribution after attenuation, and f\_D(v) is the enhancement due to deflection. The full, perturbed speed distribution is the sum of the sum of the last three columns.
