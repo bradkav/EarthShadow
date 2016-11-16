@@ -2,6 +2,8 @@
 
 Here, you will find animations showing the event rate in a CRESST-II-like detector as a function of time. In all cases, the DM mass is 0.5 GeV, with interactions strength set to give a 10% average scattering probability.
 
+These animations can be viewed in *in browser* on [FigShare](https://figshare.com/s/ee646f390941257b32c3).
+
 #### Whole-Earth maps
 
 Files beginning `moll` show Mollweide projections of the whole Earth. We show results for three NREFT operators: O1, O8 and O12. Files ending in `_noD` only take into account attenuation, not deflection. The remaining videos include both deflection and attenuation.
