@@ -1,0 +1,308 @@
+\documentclass[notitlepage,12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{arydshln,leftidx,mathtools}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage{eucal} 
+
+%---------Code listings----------
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=.25in,
+    xrightmargin=.25in
+}
+ 
+\lstset{style=mystyle}
+
+
+
+
+%---------Commands-------------
+
+\setcounter{section}{0}
+\newcommand{\runDM}{\texttt{runDM}\xspace}
+\newcommand{\EarthShadow}{\texttt{EarthShadow}\xspace}
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\newcommand{\ourpaper}{\href{http://arxiv.org/abs/1611.#####}{arXiv:1611.#####}\xspace}
+
+%--------Document--------------
+
+\begin{document}
+
+\title{\EarthShadow v1.0 - Manual \\ \vspace{0.5cm}\normalsize}
+
+\date{\vspace{-1cm}\nth{17} Nov 2016}
+
+\maketitle
+
+\tableofcontents
+
+\section{Overview}
+
+
+
+The \runDM code is a tool for calculating the running of the couplings of Dark Matter (DM) to the Standard Model (SM) in simplified models with vector mediators. By specifying the mass of the mediator and the couplings of the mediator to SM fields at high energy, the code can be used to calculate the couplings at low energy, taking into account the mixing of all dimension-6 operators. The code can also be used to extract the operator coefficients relevant for direct detection, namely low energy couplings to up, down and strange quarks and to protons and neutrons. 
+
+Further details about the physics behind the code can be found in Appendix B of \ourpaper.
+
+At present, the code is available in two languages: \textit{Mathematica} and \textit{Python}. For installation instructions and example code in each language, skip straight to Sec.~\ref{sec:implementations}. Example files/notebooks for all versions of the code (along with the code itself) are available at: \href{https://github.com/bradkav/runDM/}{https://github.com/bradkav/runDM/}. If you are interested in an implementation in another language, please get in touch and we'll do what we can to add it. Unless you want the code in Fortran, in which case you have to buy me beer first. 
+
+Please contact Bradley Kavanagh (\href{mailto:bradkav@gmail.com?subject=EarthShadow v.10}{bradkav@gmail.com}) for any questions, problems, bugs and suggestions.
+
+If you make use of \runDM in your work, please cite it as:
+
+\begin{quote}
+B. J. Kavanagh, R. Catena \& C. Kouvaris (2016). \textit{EarthShadow} (Version X.X) [Computer software]. Available at https://github.com/bradkav/EarthShadow/\,,
+\end{quote}
+making sure to include the correct version number. Please also cite the associated paper:
+
+\begin{quote}
+
+B. J. Kavanagh, R. Catena \& C. Kouvaris, \textit{Signatures of Earth-scattering in the direct detection of Dark Matter} (2016), \ourpaper.
+\end{quote}
+
+
+
+\section{General framework}
+
+This section describes the general framework of \runDM, describing the general usage, inputs and outputs of \runDM, as well as pseudocode for how to use the most important functions. For implementation-specific information, please see Sec.~\ref{sec:implementations}.
+
+The core of \runDM is the function \texttt{runCouplings}($\mathbf{c}$, $E_1$, $E_2$). This function accepts as input a vector of couplings $\mathbf{c}$, specified at some energy $E_1$. It returns a different vector of couplings, evaluated at some other energy $E_2$, taking into account RG evolution between the two energy scales. Full details about the numerical implementation can be found in Appendix~B of \ourpaper. Here, we simply outline which coupling values are required as input and output.
+
+The input vector  $\mathbf{c}$ has 16 elements, the coefficients of the dimension-6 DM-SM operators of the form: $\mathcal{O}_{\mathrm{DM},\mu} \, \mathcal{O}_\mathrm{SM}^\mu/m_V^2$, where $m_V$ is the mass of the vector mediator. The structure of the DM operator does not affect the running of the coefficients and may take the following forms for fermionic DM $\chi$:
+
+\begin{equation}
+\mathcal{O}_{\mathrm{DM},\mu} = \overline{\chi}\gamma_\mu \chi\,, \,\overline{\chi} \gamma_\mu \gamma^5 \chi\,,
+\end{equation}
+and for complex scalar DM $\phi$:
+\begin{equation}
+\mathcal{O}_{\mathrm{DM},\mu} = \phi^\dagger \overleftrightarrow{\partial}_\mu \phi\, , \, \partial_\mu (\phi^\dagger \phi)\,.\end{equation}
+
+The SM operators which appear at dimension-6, defined above the electroweak symmetry breaking (EWSB) scale, are:
+\begin{alignat}{2}
+\mathcal{O}_{q^{(i)}}^\mu &= \overline{q}^{(i)}_L \gamma^\mu q^{(i)}_L \,, \qquad \mathcal{O}_{l^{(i)}}^\mu   &= \overline{l}^{(i)}_L \gamma^\mu l^{(i)}_L\,, \nonumber \\
+\mathcal{O}_{u^{(i)}}^\mu &= \overline{u}^{(i)}_R \gamma^\mu u^{(i)}_R\,, \qquad \mathcal{O}_{e^{(i)}}^\mu &= \overline{e}^{(i)}_R \gamma^\mu e^{(i)}_R \,, \\
+\mathcal{O}_{d^{(i)}}^\mu &= \overline{d}^{(i)}_R \gamma^\mu d^{(i)}_R\,, \qquad\mathcal{O}_H^\mu &= i H^\dagger \overleftrightarrow{D}_\mu H\,, \nonumber
+\end{alignat}
+where the $(i)$ superscript labels the generation number. The vector of couplings $\mathcal{c}$ which \runDM accepts as input is then defined as 
+\begin{equation}
+\scalemath{0.9}{\mathbf{c} = \left(\!\begin{array}{cccccccccccccccc}
+c_{ q}^{(1)} & c_{u}^{(1)} & c_{ d}^{(1)}\,&\, c_{ l}^{(1)} & c_{ e}^{(1)} \,&\, 
+c_{ q}^{(2)} & c_{ u}^{(2)} & c_{ d}^{(2)} \,&\, c_{ l}^{(2)} & c_{ e}^{(2)} \,&\,
+c_{ q}^{(3)} & c_{ u}^{(3)} & c_{ d}^{(3)} \,&\, c_{ l}^{(3)} & c_{ e}^{(3)} \,&\,
+c_{ \!H} \end{array}\!\right)}\,.
+\label{eq:cdef}
+\end{equation}
+A number of functions are available to initialise these coupling vectors - see Sec.~\ref{sec:init}.
+
+If the energy $E_2$ at which to evaluate the couplings is above the EWSB scale (i.e.~$E_2 > m_Z$), the output of \texttt{runCouplings} will be a vector of couplings as in Eq.~\ref{eq:cdef}, evaluated after RG evolution. However, if $E_2$ is below the EWSB scale (i.e.~$E_2 <m_Z$), then \texttt{runCouplings} will return the vector $\mathcal{C}$, which are the couplings to the SM operators after EWSB. These operators are
+
+\begin{alignat}{2}
+\mathcal{O}_{Vu^{(i)}}^\mu &= \overline{u}^{(i)} \gamma^\mu u^{(i)}\,, \qquad \mathcal{O}_{Au^{(i)}}^\mu &= \overline{u}^{(i)} \gamma^\mu \gamma^5 u^{(i)}\,, \nonumber \\
+\mathcal{O}_{Vd^{(i)}}^\mu &= \overline{d}^{(i)} \gamma^\mu d^{(i)}\,, \qquad \mathcal{O}_{Ad^{(i)}}^\mu &=  \overline{d}^{(i)} \gamma^\mu \gamma^5 d^{(i)}\,,\\
+\mathcal{O}_{Ve^{(i)}}^\mu &= \overline{e}^{(i)} \gamma^\mu e^{(i)}\,, \qquad \mathcal{O}_{Ae^{(i)}}^\mu &=  \overline{e}^{(i)} \gamma^\mu \gamma^5 e^{(i)}\,, \nonumber
+\end{alignat}
+and the corresponding coupling vector is
+\begin{align}
+\scalemath{0.9}{\mathcal{C} = \left(\!\begin{array}{cccccccccccccccc}
+\mathcal{C}_{ Vu}^{(1)} & \mathcal{C}_{ Vd}^{(1)} & \mathcal{C}_{ Vu}^{(2)} & \mathcal{C}_{ Vd}^{(2)} & \mathcal{C}_{ Vd}^{(3)} & 
+\mathcal{C}_{ Ve}^{(1)} &\mathcal{C}_{ Ve}^{(2)}  & \mathcal{C}_{ Ve}^{(3)}  & \mathcal{C}_{ Au}^{(1)} & \mathcal{C}_{ Ad}^{(1)} & \mathcal{C}_{ Au}^{(2)} & \mathcal{C}_{ Ad}^{(2)} & \mathcal{C}_{ Ad}^{(3)} & 
+\mathcal{C}_{ Ae}^{(1)} &\mathcal{C}_{ Ae}^{(2)}  & \mathcal{C}_{ Ae}^{(3)} \end{array}\!\right) }\,.
+\label{eq:cdef2}
+\end{align}
+
+The \runDM code takes care of the matching between between $\mathbf{c}$ and $\mathcal{C}$ at the EWSB-scale. It also takes care of relative values of $E_1$ and $E_2$ compared to each other and to $m_Z$. The only possibility which is not allowed is to have $E_1 < m_Z$ and $E_2 > m_Z$. This is because the matching from the broken to the unbroken phase of the SM is not unique.
+
+In the following subsections, we give more details on the key functions available in \runDM, including \texttt{DDCouplingQuarks} (Sec.~\ref{sec:DDCouplingsQuarks}) and \texttt{DDCouplingNR} (Sec.~\ref{sec:DDCouplingsNR}) which allow the user to directly calculate the couplings relevant at the direct detection scale.
+
+\subsection{Initialisation}
+\label{sec:init}
+
+The input coupling vector $\mathbf{c}$ must be in the form of an array with 16 elements. To help with initialisation, \runDM includes the function \texttt{initCouplings()}, which returns such an array, filled with zeroes. The user is then free to specify each of the 16 couplings in Eq.~\ref{eq:cdef}.
+
+Alternatively, \texttt{setBenchmark(benchmarkID)} returns a coupling vector $\mathbf{c}$ corresponding to one of a number of preset benchmarks, specified using the string \texttt{benchmarkID}. The available benchmarks are:
+
+\begin{itemize}
+
+\item \texttt{"Higgs"} - coupling only to the Higgs current operator: 
+
+\qquad $c_H = 1$, all other couplings zero.
+
+\item \texttt{"UniversalVector"} - universal vector coupling to all fermions: 
+
+\qquad $c_q^{(i)} = c_u^{(i)} = c_d^{(i)} = c_l^{(i)} = c_e^{(i)} = 1$, $c_H = 0$.
+
+\item \texttt{"UniversalAxial"} - universal axial-vector coupling to all fermions: 
+
+\qquad $-c_q^{(i)} = c_u^{(i)} = c_d^{(i)} = -c_l^{(i)} = c_e^{(i)} = 1$, $c_H = 0$.
+
+\item \texttt{"QuarksVector"} - vector coupling to all quarks: 
+
+\qquad $c_q^{(i)} = c_u^{(i)} = c_d^{(i)} = 1$, $c_l^{(i)} = c_e^{(i)} = c_H = 0$.
+
+\item \texttt{"QuarksAxial"} - axial-vector coupling to all quarks: 
+
+\qquad $-c_q^{(i)} = c_u^{(i)} = c_d^{(i)} = 1$, $c_l^{(i)} = c_e^{(i)} = c_H = 0$.
+
+\item \texttt{"LeptonsVector"} - vector coupling to all leptons: 
+
+\qquad $c_l^{(i)} = c_e^{(i)} = 1$, $c_q^{(i)} = c_u^{(i)} = c_d^{(i)} = c_H = 0$.
+
+\item \texttt{"LeptonsAxial"} - axial-vector coupling to all leptons: 
+
+\qquad $-c_l^{(i)} = c_e^{(i)} = 1$, $c_q^{(i)} = c_u^{(i)} = c_d^{(i)} = c_H = 0$.
+
+\item \texttt{"ThirdVector"} - vector coupling to third generation fermions: 
+
+\qquad $c_q^{(3)} = c_u^{(3)} = c_d^{(3)} = c_l^{(3)} = c_e^{(3)} = 1$, all remaining couplings zero.
+
+\item \texttt{"ThirdAxial"} - axial-vector coupling to third generation fermions: 
+
+\qquad $-c_q^{(3)} = c_u^{(3)} = c_d^{(3)} = -c_l^{(3)} = c_e^{(3)} = 1$, all remaining couplings zero.
+
+\end{itemize}
+
+If the value of \texttt{benchmarkID} is not recognised, \texttt{setBenchmark} simply returns a coupling vector filled with zeroes.
+
+\subsection{runCouplings}
+
+The function \texttt{runCouplings}($\mathbf{c}$, $E_1$, $E_2$) accepts as input a vector of couplings $\mathbf{c}$, defined at energy $E_1$ (in GeV) and returns a vector of couplings evaluated at energy $E_2$ (in GeV), taking into account the running, matching and mixing between the two energies. The energies $E_1$ and $E_2$ must be in the range $[1, 10^8]$ GeV (the evolution matrices have not been calculated outside of that range). The input vector $\mathbf{c}$ has the form of Eq.~\ref{eq:cdef}.
+
+ If $E_2 > m_Z$, \texttt{runCouplings} returns the elements of $\mathbf{c}$, the vector of couplings above the EWSB scale defined in Eq.~\ref{eq:cdef}. Alternatively, if $E_2 < m_Z$, \texttt{runCouplings} returns the elements of $\mathbf{\mathcal{C}}$, the vector of couplings in the EFT below the EWSB scale, defined in Eq.~\ref{eq:cdef2}. Note that \texttt{runCoupling} will return an error if $E_1 < m_Z$ and $E_2 > m_Z$ - in this case the matching at the EWSB-scale is not unique.
+
+The function \texttt{runCouplings} is \textit{vectorized}, meaning that it will accept $E_1$ and $E_2$ as arrays as well as single numbers. \texttt{runCouplings} will happily deal with one of $E_1$ and $E_2$ being an array and the other being a scalar. The output of \texttt{runCouplings} will be an array with dimensions \{Length($E_1$), 16\} or \{Length($E_2$), 16\}, depending on which of $E_1$ and $E_2$ is an array. If both $E_1$ and $E_2$ are arrays, they should have the same length and \textit{runCouplings} will return an array with dimensions \{Length($E_1$), 16\}. The function is \textit{not vectorized} in $\mathbf{c}$ - i.e. $\mathbf{c}$ should always be a 1-dimensional array with 16 elements.
+
+\subsection{DDCouplingsQuarks}
+\label{sec:DDCouplingsQuarks}
+
+The function \texttt{DDCouplingsQuarks}($\mathbf{c}$, $E_1$) accepts as input a vector of couplings $\mathbf{c}$, defined at energy $E_1$ (in GeV). The input vector $\mathbf{c}$ has the form of Eq.~\ref{eq:cdef}. The running is performed down to the nuclear energy scale of 1 GeV and the function returns a vector of the low-energy couplings to light quarks ($u$, $d$, $s$) relevant for direct detection:
+
+\begin{equation}
+\mathcal{C}_q = \left( \mathcal{C}_V^{(u)}, \mathcal{C}_V^{(d)}, \mathcal{C}_A^{(u)}, \mathcal{C}_A^{(d)}, \mathcal{C}_A^{(s)} \right)\,.
+\end{equation}
+
+As in \texttt{runCouplings}, $E_1$ must be in the range $[1, 10^8]$ GeV. \texttt{DDCouplingQuarks} is also vectorized, so it will accept $E_1$ as a scalar or an array. It will return an array with dimensions \{Length($E_1$), 5\}.
+
+\subsection{DDCouplingsNR}
+\label{sec:DDCouplingsNR}
+
+The function \texttt{DDCouplingsNR}($\mathbf{c}$, $E_1$, \texttt{mx}, \texttt{DMcurrent}, \texttt{N}) is an alternative to \texttt{DDCouplingsQuarks} which takes care of the embedding of the quarks in the nucleon and the matching onto non-relativistic (NR) operators. 
+
+\texttt{DDCouplingsNR} accepts as input a vector of couplings $\mathbf{c}$, defined at energy $E_1$ (in GeV). The input vector $\mathbf{c}$ has the form of Eq.~\ref{eq:cdef}. The running is performed down to the nuclear energy scale of 1 GeV. The quark level coefficients are then matched onto the nucleon-level coefficients (with \texttt{N} = `p' for protons and \texttt{N} = `n' for neutrons).\footnote{For the quark spin content of the nucleons, $\Delta_q^{(N)}$, we use the values in the lower panel of Table~II of \href{http://arxiv.org/abs/1202.1292}{arXiv:1202.1292}.} The relativistic nucleon-level coefficients are then matched onto the NR operators introduced in \href{http://arxiv.org/abs/1203.3542}{arXiv:1203.3542}, depending on the form of the DM interaction current and the value of the DM mass \texttt{mx} (in GeV). The possibilities for the variable \texttt{DMcurrent} are:
+
+\begin{equation}
+\mathcal{O}_{\mathrm{DM}, \mu} = 
+\begin{cases}
+\phi^\dagger \overleftrightarrow{\partial}_\mu \phi & \qquad \text{\texttt{DMcurrent = `scalar'},}\\
+\overline{\chi} \gamma_\mu \chi & \qquad \text{\texttt{DMcurrent = `vector'},}\\
+\overline{\chi} \gamma_\mu \gamma^5 \chi & \qquad \text{\texttt{DMcurrent = `axial-vector'}.}\\
+\end{cases}
+\end{equation}
+The function returns a vector of 12 NR operator coefficients, with definitions and numbering of the operators matching those in \href{http://arxiv.org/abs/1203.3542}{arXiv:1203.3542} and \href{http://arxiv.org/abs/1307.5955}{arXiv:1307.5955}:
+\begin{equation}
+\left(\mathfrak{c}_{\phi(\chi) \, 1}^{N}, \mathfrak{c}_{\phi(\chi) \, 2}^{N}, ..., \mathfrak{c}_{\phi(\chi) \, 12}^{N}\right) \,.
+\end{equation}
+Note that the calculation of these coefficients automatically includes a factor of $1/E_1^2$ (equivalent to $1/m_V^2$, arising from the mediator propagator). For more details, see Appendix C of \ourpaper.
+
+Again, $E_1$ must be in the range $[1, 10^8]$ GeV. \texttt{DDCouplingNR} is also vectorized, so it will accept $E_1$ as a scalar or an array.  However, \texttt{mx}, \texttt{DMcurrent} and \texttt{N} must all be single values. The function will return an array with dimensions \{Length($E_1$), 12\}.
+\section{Implementations}
+\label{sec:implementations}
+
+\subsection{Mathematica}
+
+In order to use the \textit{mathematica} implementation of \texttt{runDM}, simply copy the \textit{mathematica} package file \texttt{mathematica/runDM.m} into the same directory as your notebook and then use \texttt{Get}:
+
+\begin{lstlisting}[language=mathematica]
+Get[NotebookDirectory[] <> "runDM.m"];
+\end{lstlisting}
+
+Below is an example code snippet for calculating (and plotting) the low energy couplings to light quarks (relevant in direct detection experiments) at the nuclear energy scale, assuming a mediator of mass $m_V$ which couples through the axial-vector current to all SM quarks:
+
+\begin{lstlisting}[language=mathematica]
+Get[NotebookDirectory[] <> "runDM.m"];
+
+(*Set benchmark*)
+chigh = setBenchmark["QuarksAxial"];
+
+clabels = {"cVu", "cVd", "cAu", "cAd", "cAs"};
+
+(*Calculate and plot*)
+Table[Plot[{DDCouplingsQuarks[chigh, 10^lmv][[k]]}, {lmv, 0.0, 6.0}, 
+  PlotTheme -> "Scientific", 
+  FrameLabel -> {"Log10[mv/GeV]", clabels[[k]]}, 
+  PlotRangePadding -> .1, ImageSize -> 200, 
+  BaseStyle -> {FontSize -> 16}], {k, 5}]
+\end{lstlisting}
+For more detailed examples, see the notebook at \texttt{mathematica/runDM-examples.nb}. We also provide an example notebook showing how to interface \runDM with \textsc{NRopsDD v3.0}, available at \href{http://www.marcocirelli.net/NROpsDD.html}{this http URL}, in order to calculate limits from direct detection experiments for arbitrary sets of couplings. This notebook can be found at \texttt{mathematica/runDM-NRopsDD.nb}.
+
+\subsection{Python}
+
+In order to use the \textit{python} implementation of \runDM, you will need to have the \href{http://www.numpy.org}{\texttt{numpy}} and \href{https://www.scipy.org/index.html}{\texttt{scipy}} packages installed.  Once that's done, copy the module file \texttt{python/runDM.py} into the same directory as your python script. Make sure that the folder \texttt{python/data/} is in the same folder as the module file. Then simply import the module:
+
+\begin{lstlisting}[language=Python]
+import runDM
+\end{lstlisting}
+
+Below is an example code snippet for calculating (and plotting) the low energy couplings to light quarks (relevant in direct detection experiments) at the nuclear energy scale, assuming a mediator of mass $m_V$ which couples through the axial-vector current to all SM quarks:
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+from matplotlib import pyplot as pl
+import runDM
+
+#Set benchmark
+c_high = runDM.setBenchmark("QuarksAxial")
+
+#Calculate the low energy couplings
+mV = np.logspace(0, 6, 1000)
+c_q = runDM.DDCouplingsQuarks(c_high, mV)
+
+#Now let's do some plotting
+f, axarr = pl.subplots(5,figsize=(5,9))
+
+clabels = ['c_V^u','c_V^d','c_A^u','c_A^d','c_A^s']
+
+for k in range(5):
+    ax = axarr[k]
+    ax.semilogx(mV, c_q[:,k])
+    ax.set_xlabel(r'$m_V$ [GeV]', fontsize=14.0)
+    ax.set_ylabel(r'$'+clabels[k]+'$', fontsize=14.0)
+    
+pl.tight_layout()
+pl.show()
+\end{lstlisting}
+For more detailed examples, see the script at \texttt{python/runDM-examples.py} or the ipython notebook at \texttt{python/runDM-examples.ipynb}.
+\end{document}
+
