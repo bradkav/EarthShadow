@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[    154679,       3185]
-NotebookOptionsPosition[    151389,       3073]
-NotebookOutlinePosition[    151797,       3091]
-CellTagsIndexPosition[    151754,       3088]
+NotebookDataLength[    159249,       3308]
+NotebookOptionsPosition[    155531,       3183]
+NotebookOutlinePosition[    156152,       3207]
+CellTagsIndexPosition[    156046,       3202]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -80,13 +80,119 @@ of DM-scattering in the Earth.\\nSend corrections/suggestions to \
 bradkav@gmail.com.\\nTo get a list of available functions, type: \
 ?EarthShadow`*\"\>"], "Print",
  CellChangeTimes->{3.688385754960232*^9, 3.6883863460328712`*^9, 
-  3.6883869583465853`*^9}]
+  3.6883869583465853`*^9, 3.688412668979972*^9}]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"?", "EarthShadow`*"}]], "Input",
  CellChangeTimes->{{3.688382026405094*^9, 3.6883820265741873`*^9}, {
   3.688385878076482*^9, 3.688385881178142*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ DynamicModuleBox[{Typeset`open$$ = True}, 
+  PaneSelectorBox[{False->
+   RowBox[{
+    OpenerBox[Dynamic[Typeset`open$$],
+     ImageSize->Small], 
+    StyleBox["EarthShadow`", "InfoHeading"]}], True->GridBox[{
+     {
+      RowBox[{
+       OpenerBox[Dynamic[Typeset`open$$],
+        ImageSize->Small], 
+       StyleBox["EarthShadow`", "InfoHeading"]}]},
+     {GridBox[{
+        {
+         ButtonBox["Pc\[Alpha]minus",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "Pc\[Alpha]minus", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"], 
+         ButtonBox["SpeedDistAttenuation",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "SpeedDistAttenuation", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"], 
+         ButtonBox["VelDistAttenuation",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "VelDistAttenuation", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"]},
+        {
+         ButtonBox["Pc\[Alpha]plus",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "Pc\[Alpha]plus", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"], 
+         ButtonBox["SpeedDistDeflection",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "SpeedDistDeflection", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"], 
+         ButtonBox["VelDistDeflection",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "VelDistDeflection", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"]},
+        {
+         ButtonBox["pscat",
+          BaseStyle->"InformationLink",
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "pscat", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"], 
+         ButtonBox["SpeedDistFree",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "SpeedDistFree", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"], 
+         ButtonBox["VelDistFree",
+          BaseStyle->"InformationLink",
+          
+          ButtonData:>{
+           "Info-944c70fe-14cf-44f6-96c4-e7986aee563a", {
+            "VelDistFree", "EarthShadow`"}},
+          ButtonNote->"EarthShadow`"]}
+       },
+       DefaultBaseStyle->"InfoGrid",
+       GridBoxItemSize->{"Columns" -> {{
+            Scaled[0.31666666666666665`]}}}]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}]}, 
+   Dynamic[Typeset`open$$],
+   ImageSize->Automatic]]], "Print", "InfoCell",
+ CellChangeTimes->{3.688412669843066*^9}],
+
+Cell[BoxData[
+ StyleBox["\<\"VelDistFree[v, \[Theta], \[Phi], \[Gamma]] calculates the free \
+SHM velocity distribution (in [km/s]^-3).\\n\\nThe parameters describing the \
+SHM can be changed in the EarthShadow.m package file.\\nIf you do make \
+changes, don't forget to delete and recalculate PhiIntegrals.dat.\\n\\nInput:\
+\\n\t-v: DM speed measured in km/s\\n\t-\[Theta], \[Phi]: angular coordinates \
+(in Radians) for the DM direction\\n\t\t    in a coordinate system with the \
+detector along the z-axis\\n\t\t    and the average DM velocity x-z plane\\n\t\
+-\[Gamma]: angle between z-axis and average DM velocity (see Fig. 1)\\n\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellTags->"Info-944c70fe-14cf-44f6-96c4-e7986aee563a"]
+}, Open  ]]
+}, Open  ]],
 
 Cell["\<\
 EarthShadow tends to complain about integrals a lot, so \
@@ -145,7 +251,8 @@ Cell[BoxData[{
 Cell[BoxData["0.3513697820649826`"], "Output",
  CellChangeTimes->{
   3.6883862787890253`*^9, 3.688386361011735*^9, 3.688386411166485*^9, 
-   3.6883867124337683`*^9, {3.688386994205432*^9, 3.688386998101565*^9}}]
+   3.6883867124337683`*^9, {3.688386994205432*^9, 3.688386998101565*^9}, 
+   3.688412836008891*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -199,7 +306,8 @@ Cell[BoxData[
 
 Cell[BoxData["0.027221151113990042`"], "Output",
  CellChangeTimes->{{3.688386612610917*^9, 3.688386634951993*^9}, 
-   3.6883866815411386`*^9, 3.688386712932556*^9, 3.688386999370941*^9}]
+   3.6883866815411386`*^9, 3.688386712932556*^9, 3.688386999370941*^9, 
+   3.688412837439954*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -246,7 +354,7 @@ Cell[BoxData[
 Cell[BoxData["0.00004529801384077274`"], "Output",
  CellChangeTimes->{
   3.6883880449960823`*^9, {3.688388087932745*^9, 3.688388094706482*^9}, 
-   3.688388521846431*^9}]
+   3.688388521846431*^9, 3.688412837577299*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -264,7 +372,7 @@ Cell[BoxData[
 
 Cell[BoxData["0.09946174137347166`"], "Output",
  CellChangeTimes->{{3.6883880711307917`*^9, 3.6883880973605213`*^9}, 
-   3.688388525729494*^9}]
+   3.688388525729494*^9, 3.688412838764481*^9}]
 }, Open  ]],
 
 Cell["Close enough...", "Text",
@@ -1205,7 +1313,8 @@ mCRRIH1wvETUkbBrVX2SMENC/2XG+a/55oTF7dvm8iSJ8CjhJ7NT2oRRklxP
      RowBox[{#, ",", 
        RowBox[{"Placed", "[", 
          RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
- CellChangeTimes->{{3.688387239458919*^9, 3.688387322907892*^9}}]
+ CellChangeTimes->{{3.688387239458919*^9, 3.688387322907892*^9}, 
+   3.688412843085905*^9}]
 }, Open  ]]
 }, Closed]],
 
@@ -1230,18 +1339,17 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"operator", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"c10", " ", "=", " ", "0.0000453"}], 
-  ";"}], "\[IndentingNewLine]"}], "Input",
- CellChangeTimes->{{3.688388160714923*^9, 3.6883882036568317`*^9}}],
+  RowBox[{"c10", " ", "=", " ", "0.0000453"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.688388160714923*^9, 3.6883882036568317`*^9}, 
+   3.6884128598247957`*^9}],
 
 Cell["\<\
-
 The full distribution is given by the sum of SpeedDistFree, \
 SpeedDistAttenuation and SpeedDistDeflection.\
 \>", "Text",
  CellChangeTimes->{{3.688387502411099*^9, 3.688387557461725*^9}, {
-  3.688387729256432*^9, 3.688387734016004*^9}, {3.688388109259701*^9, 
-  3.68838815755864*^9}}],
+   3.688387729256432*^9, 3.688387734016004*^9}, {3.688388109259701*^9, 
+   3.68838815755864*^9}, 3.688412862345296*^9}],
 
 Cell["The free speed distribution is easy:", "Text",
  CellChangeTimes->{{3.688387562049818*^9, 3.688387570056538*^9}}],
@@ -1434,7 +1542,8 @@ Y6XpsssH/qBnG5ct9UlqHWPTsiP6jYStrZbd0+c0+w8t+38/fIuk
      Scaled[0.05]}},
   Ticks->{Automatic, Automatic}]], "Output",
  CellChangeTimes->{
-  3.68838757586147*^9, {3.688387614143242*^9, 3.6883876209898767`*^9}}]
+  3.68838757586147*^9, {3.688387614143242*^9, 3.6883876209898767`*^9}, 
+   3.6884128505892963`*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -1470,9 +1579,9 @@ Cell[BoxData[
   3.6883885532609873`*^9, 3.688388571481285*^9}}],
 
 Cell[BoxData[
- RowBox[{"-", "0.00006629625675206941`"}]], "Output",
+ RowBox[{"-", "0.00006630167683686604`"}]], "Output",
  CellChangeTimes->{{3.688388345327962*^9, 3.688388349871513*^9}, 
-   3.688388545000758*^9}]
+   3.688388545000758*^9, 3.688412851428315*^9}]
 }, Open  ]],
 
 Cell["Similarly, the enhancement due to deflection is:", "Text",
@@ -1489,8 +1598,8 @@ Cell[BoxData[
   3.688388431919685*^9, 3.6883884328926067`*^9}, {3.688388484614738*^9, 
   3.688388485758235*^9}, {3.6883885571675663`*^9, 3.688388570029476*^9}}],
 
-Cell[BoxData["0.00013951970669507508`"], "Output",
- CellChangeTimes->{3.688388540241722*^9}]
+Cell[BoxData["0.00013953194186410163`"], "Output",
+ CellChangeTimes->{3.688388540241722*^9, 3.688412862546077*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -3067,7 +3176,8 @@ fw/hd7Q7wNIBANvPo8o=
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0}}}],
   "Column"]], "Output",
- CellChangeTimes->{{3.6883893264407063`*^9, 3.688389328616288*^9}}]
+ CellChangeTimes->{{3.6883893264407063`*^9, 3.688389328616288*^9}, 
+   3.6884128730364532`*^9}]
 }, Open  ]]
 }, Closed]]
 },
@@ -3083,10 +3193,16 @@ StyleDefinitions->"Default.nb"
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{}
+CellTagsIndex->{
+ "Info-944c70fe-14cf-44f6-96c4-e7986aee563a"->{
+  Cell[7773, 182, 731, 10, 232, "Print",
+   CellTags->"Info-944c70fe-14cf-44f6-96c4-e7986aee563a"]}
+ }
 *)
 (*CellTagsIndex
-CellTagsIndex->{}
+CellTagsIndex->{
+ {"Info-944c70fe-14cf-44f6-96c4-e7986aee563a", 155922, 3196}
+ }
 *)
 (*NotebookFileOutline
 Notebook[{
@@ -3096,88 +3212,95 @@ Cell[CellGroupData[{
 Cell[3368, 59, 153, 2, 68, "Section"],
 Cell[CellGroupData[{
 Cell[3546, 65, 559, 10, 46, "Input"],
-Cell[4108, 77, 337, 5, 70, "Print"]
+Cell[4108, 77, 359, 5, 70, "Print"]
 }, Open  ]],
-Cell[4460, 85, 173, 3, 28, "Input"],
-Cell[4636, 90, 181, 4, 30, "Text"],
-Cell[4820, 96, 177, 4, 28, "Input"]
+Cell[CellGroupData[{
+Cell[4504, 87, 173, 3, 28, "Input"],
+Cell[CellGroupData[{
+Cell[4702, 94, 3068, 86, 96, "Print"],
+Cell[7773, 182, 731, 10, 232, "Print",
+ CellTags->"Info-944c70fe-14cf-44f6-96c4-e7986aee563a"]
+}, Open  ]]
+}, Open  ]],
+Cell[8531, 196, 181, 4, 30, "Text"],
+Cell[8715, 202, 177, 4, 28, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[5034, 105, 150, 2, 54, "Section"],
-Cell[5187, 109, 239, 7, 30, "Text"],
+Cell[8929, 211, 150, 2, 54, "Section"],
+Cell[9082, 215, 239, 7, 30, "Text"],
 Cell[CellGroupData[{
-Cell[5451, 120, 825, 22, 97, "Input"],
-Cell[6279, 144, 211, 3, 28, "Output"]
+Cell[9346, 226, 825, 22, 97, "Input"],
+Cell[10174, 250, 237, 4, 28, "Output"]
 }, Open  ]],
-Cell[6505, 150, 182, 4, 30, "Text"],
-Cell[6690, 156, 959, 24, 114, "Input"],
-Cell[7652, 182, 173, 4, 30, "Text"],
+Cell[10426, 257, 182, 4, 30, "Text"],
+Cell[10611, 263, 959, 24, 114, "Input"],
+Cell[11573, 289, 173, 4, 30, "Text"],
 Cell[CellGroupData[{
-Cell[7850, 190, 302, 7, 35, "Input"],
-Cell[8155, 199, 186, 2, 28, "Output"]
+Cell[11771, 297, 302, 7, 35, "Input"],
+Cell[12076, 306, 212, 3, 28, "Output"]
 }, Open  ]],
-Cell[8356, 204, 527, 8, 87, "Text"],
-Cell[8886, 214, 461, 11, 63, "Input"],
-Cell[9350, 227, 253, 5, 49, "Text"],
+Cell[12303, 312, 527, 8, 87, "Text"],
+Cell[12833, 322, 461, 11, 63, "Input"],
+Cell[13297, 335, 253, 5, 49, "Text"],
 Cell[CellGroupData[{
-Cell[9628, 236, 340, 7, 28, "Input"],
-Cell[9971, 245, 169, 3, 28, "Output"]
+Cell[13575, 344, 340, 7, 28, "Input"],
+Cell[13918, 353, 191, 3, 28, "Output"]
 }, Open  ]],
-Cell[10155, 251, 208, 4, 30, "Text"],
+Cell[14124, 359, 208, 4, 30, "Text"],
 Cell[CellGroupData[{
-Cell[10388, 259, 180, 3, 28, "Input"],
-Cell[10571, 264, 143, 2, 28, "Output"]
+Cell[14357, 367, 180, 3, 28, "Input"],
+Cell[14540, 372, 165, 2, 28, "Output"]
 }, Open  ]],
-Cell[10729, 269, 99, 1, 30, "Text"]
+Cell[14720, 377, 99, 1, 30, "Text"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[10865, 275, 201, 3, 54, "Section"],
-Cell[11069, 280, 483, 8, 68, "Text"],
-Cell[11555, 290, 436, 12, 63, "Input"],
-Cell[11994, 304, 139, 1, 30, "Text"],
-Cell[12136, 307, 270, 7, 28, "Input"],
+Cell[14856, 383, 201, 3, 54, "Section"],
+Cell[15060, 388, 483, 8, 68, "Text"],
+Cell[15546, 398, 436, 12, 63, "Input"],
+Cell[15985, 412, 139, 1, 30, "Text"],
+Cell[16127, 415, 270, 7, 28, "Input"],
 Cell[CellGroupData[{
-Cell[12431, 318, 1278, 32, 115, "Input"],
-Cell[13712, 352, 44871, 855, 276, "Output"]
+Cell[16422, 426, 1278, 32, 115, "Input"],
+Cell[17703, 460, 44897, 856, 276, "Output"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[58632, 1213, 152, 2, 54, "Section"],
-Cell[58787, 1217, 406, 7, 49, "Text"],
-Cell[59196, 1226, 348, 8, 80, "Input"],
-Cell[59547, 1236, 295, 7, 68, "Text"],
-Cell[59845, 1245, 118, 1, 30, "Text"],
+Cell[62649, 1322, 152, 2, 54, "Section"],
+Cell[62804, 1326, 406, 7, 49, "Text"],
+Cell[63213, 1335, 350, 8, 63, "Input"],
+Cell[63566, 1345, 318, 6, 49, "Text"],
+Cell[63887, 1353, 118, 1, 30, "Text"],
 Cell[CellGroupData[{
-Cell[59988, 1250, 455, 12, 28, "Input"],
-Cell[60446, 1264, 9676, 172, 229, "Output"]
+Cell[64030, 1358, 455, 12, 28, "Input"],
+Cell[64488, 1372, 9704, 173, 229, "Output"]
 }, Open  ]],
-Cell[70137, 1439, 452, 7, 88, "Text"],
-Cell[70592, 1448, 208, 5, 28, "Input"],
-Cell[70803, 1455, 209, 4, 30, "Text"],
+Cell[74207, 1548, 452, 7, 88, "Text"],
+Cell[74662, 1557, 208, 5, 28, "Input"],
+Cell[74873, 1564, 209, 4, 30, "Text"],
 Cell[CellGroupData[{
-Cell[71037, 1463, 292, 6, 28, "Input"],
-Cell[71332, 1471, 159, 3, 28, "Output"]
+Cell[75107, 1572, 292, 6, 28, "Input"],
+Cell[75402, 1580, 181, 3, 28, "Output"]
 }, Open  ]],
-Cell[71506, 1477, 130, 1, 30, "Text"],
+Cell[75598, 1586, 130, 1, 30, "Text"],
 Cell[CellGroupData[{
-Cell[71661, 1482, 386, 7, 28, "Input"],
-Cell[72050, 1491, 92, 1, 28, "Output"]
+Cell[75753, 1591, 386, 7, 28, "Input"],
+Cell[76142, 1600, 114, 1, 28, "Output"]
 }, Open  ]],
-Cell[72157, 1495, 339, 6, 49, "Text"],
-Cell[72499, 1503, 6240, 153, 641, "Input"],
-Cell[78742, 1658, 387, 8, 69, "Text"],
-Cell[79132, 1668, 218, 5, 28, "Input"]
+Cell[76271, 1604, 339, 6, 49, "Text"],
+Cell[76613, 1612, 6240, 153, 641, "Input"],
+Cell[82856, 1767, 387, 8, 69, "Text"],
+Cell[83246, 1777, 218, 5, 28, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[79387, 1678, 153, 2, 54, "Section"],
-Cell[79543, 1682, 499, 10, 87, "Text"],
-Cell[80045, 1694, 193, 5, 28, "Input"],
-Cell[80241, 1701, 11916, 296, 1002, "Input"],
-Cell[92160, 1999, 148, 2, 30, "Text"],
-Cell[92311, 2003, 422, 9, 80, "Input"],
+Cell[83501, 1787, 153, 2, 54, "Section"],
+Cell[83657, 1791, 499, 10, 87, "Text"],
+Cell[84159, 1803, 193, 5, 28, "Input"],
+Cell[84355, 1810, 11916, 296, 1002, "Input"],
+Cell[96274, 2108, 148, 2, 30, "Text"],
+Cell[96425, 2112, 422, 9, 80, "Input"],
 Cell[CellGroupData[{
-Cell[92758, 2016, 401, 7, 28, "Input"],
-Cell[93162, 2025, 58199, 1044, 419, "Output"]
+Cell[96872, 2125, 401, 7, 28, "Input"],
+Cell[97276, 2134, 58227, 1045, 419, "Output"]
 }, Open  ]]
 }, Closed]]
 }

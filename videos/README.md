@@ -1,4 +1,4 @@
-## Diurnal Modulation Animations
+### Diurnal Modulation Animations
 
 Here, you will find animations showing the event rate in a CRESST-II-like detector as a function of time. In all cases, the DM mass is 0.5 GeV, with DM-nucleon interaction strength set to give a 10% average scattering probability.
 
