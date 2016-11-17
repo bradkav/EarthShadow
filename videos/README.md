@@ -1,8 +1,8 @@
-## Annual Modulation Animations
+## Diurnal Modulation Animations
 
-Here, you will find animations showing the event rate in a CRESST-II-like detector as a function of time. In all cases, the DM mass is 0.5 GeV, with interactions strength set to give a 10% average scattering probability.
+Here, you will find animations showing the event rate in a CRESST-II-like detector as a function of time. In all cases, the DM mass is 0.5 GeV, with DM-nucleon interaction strength set to give a 10% average scattering probability.
 
-These animations can be viewed in *in browser* on [FigShare](https://figshare.com/s/ee646f390941257b32c3).
+These animations can be viewed *in browser* on [FigShare](https://dx.doi.org/10.6084/m9.figshare.c.3575630.v1).
 
 #### Whole-Earth maps
 
@@ -14,6 +14,7 @@ Files beginning `ortho` show Orthographic projections centred on particular loca
 
 - `LNGS`: Gran Sasso Laboratory, Italy (latitude 42 N)
 - `INO`: India-based Neutrino Observatory, India (latitude 10 N)
-- `ANDES`: Agua Negra Deep Experiment Site, Argentina/Chile (latitude 30 S)
 - `SUPL`: Stawell Underground Physics Laboratory, Australia (latitude 37 S)
 - `CJPL`: China Jinping Underground Laboratory, China (latitude 28 N)
+
+For the local maps, we include both attenuation and deflection in all cases. 
