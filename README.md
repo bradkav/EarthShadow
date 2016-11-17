@@ -8,6 +8,7 @@ The code is still being updated, improved and expanded. We will also add more nu
 
 Please contact Bradley Kavanagh ([bradkav@gmail.com](mailto:bradkav@gmail.com?subject=EarthShadow v1.0)) for any questions, problems, bugs and suggestions.
 
+**Version 1.0 (17/11/2016):** Initial release.
 
 ### Contents
 
@@ -16,5 +17,3 @@ Please contact Bradley Kavanagh ([bradkav@gmail.com](mailto:bradkav@gmail.com?su
 - `results`: Numerical results for the perturbed speed distributions and scattering probabilities (as a function of DM mass and operator).
 - `plots`: Plots and illustrations summarising the key results. Mostly from [arXiv:1611.XXXXX](https://arxiv.org/abs/1611.XXXXX).
 - `videos`: Animations showing the time variation of the direct detection rate over the surface of the Earth (and at selected labs).
-
-*Version 1.0 (17/11/2016)*: Initial release.
