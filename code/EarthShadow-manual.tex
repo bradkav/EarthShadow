@@ -1,0 +1,91 @@
+\documentclass[notitlepage,12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{arydshln,leftidx,mathtools}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage[super]{nth}
+\usepackage{eucal} 
+
+%---------Code listings----------
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=.25in,
+    xrightmargin=.25in
+}
+ 
+\lstset{style=mystyle}
+
+
+
+
+%---------Commands-------------
+
+\setcounter{section}{0}
+\newcommand{\runDM}{\texttt{runDM}\xspace}
+\newcommand{\EarthShadow}{\textsc{EarthShadow}\xspace}
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\newcommand{\ourpaper}{\href{http://arxiv.org/abs/1611.XXXXX}{arXiv:1611.XXXXX}\xspace}
+
+%--------Document--------------
+
+\begin{document}
+
+\title{\EarthShadow v1.0 - Manual \\ \vspace{0.5cm}\normalsize}
+
+\date{\vspace{-1cm}\nth{17} Nov 2016}
+
+\maketitle
+
+%\tableofcontents
+
+\section{Overview}
+
+The \EarthShadow code is a tool for calculating the impact of Earth-scattering on the distribution of Dark Matter (DM) particles. The code allows you to calculate the speed and velocity distributions of DM at various positions on the Earth in the 'single scatter' regime, in which DM particles reaching the detector have scattered at most once. The code also helps with the calculation of the average scattering probability of particles crossing the Earth, and includes tabulated data for DM-nuclear scattering cross sections. Further details about the physics behind the code can be found in \ourpaper.
+
+The code is available at: \href{https://github.com/bradkav/EarthShadow/}{https://github.com/bradkav/EarthShadow/}, along with data files, numerical results and plots. At present, the code is written in \textit{Mathematica}, distributed in the package file \texttt{EarthShadow.m}. Instructions on loading the package and examples of how to use it are given in the notebook \texttt{EarthShadow-Examples.nb}. More detailed documentation will be added soon. If you are interested in an implementation in another language, please get in touch - we may add a python or C++ implementation in the future. Please contact Bradley Kavanagh (\href{mailto:bradkav@gmail.com?subject=EarthShadow v1.0}{bradkav@gmail.com}) for any questions, problems, bugs and suggestions.
+
+If you make use of \EarthShadow in your work, please cite it as:
+
+\begin{quote}
+B. J. Kavanagh, R. Catena \& C. Kouvaris (2016). \textit{EarthShadow} (Version 1.0) [Computer software]. Available at https://github.com/bradkav/EarthShadow/\,,
+\end{quote}
+making sure to include the correct version number. Please also cite the associated paper:
+
+\begin{quote}
+
+B. J. Kavanagh, R. Catena \& C. Kouvaris, \textit{Signatures of Earth-scattering in the direct detection of Dark Matter} (2016), \ourpaper.
+\end{quote}
+
+\end{document}
+
