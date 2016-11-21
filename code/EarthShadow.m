@@ -471,7 +471,7 @@ pscat[mx_, op_, c_?NumericQ]:=
 )
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Integrands for calculating deflection distribution*)
 
 
@@ -500,7 +500,7 @@ deff[\[Theta]2, iso]*(aplus + aminus), c\[Alpha] > Minc\[Alpha][mx, mA]},{0, c\[
 
 
 ClearAll[fDintegrand2]
-fDintegrand2[v2_, \[Theta]2_, \[Phi]2_, \[Theta]1_, \[Gamma]_, mx_, iso_, op_, cint_]:=
+fDintegrand2[v2_?NumericQ, \[Theta]2_?NumericQ, \[Phi]2_?NumericQ, \[Theta]1_?NumericQ, \[Gamma]_?NumericQ, mx_?NumericQ, iso_?NumericQ, op_?NumericQ, cint_?NumericQ]:=
 (
 c\[Alpha] = cosine\[Alpha][\[Theta]2, \[Phi]2, \[Theta]1, 0];
 mA =  0.9312*Avals[iso];
