@@ -1,5 +1,7 @@
 ## EarthShadow
 
+<a href="http://ascl.net/1611.012"><img src="https://img.shields.io/badge/ascl-1611.012-blue.svg?colorB=262255" alt="ascl:1611.012" /></a>
+
 **Skip to the good stuff:** Animations showing the daily modulation can be viewed *in browser* on [FigShare](https://dx.doi.org/10.6084/m9.figshare.c.3575630).
 
 The `EarthShadow` code is a tool for calculating the impact of Earth-scattering on the distribution of Dark Matter (DM) particles. The code allows you to calculate the speed and velocity distributions of DM at various positions on the Earth  and also helps with the calculation of the average scattering probabilities. We also include tabulated data for DM-nuclear scattering cross sections and various numerical results, plots and animations. Further details about the physics behind the code can be found in [arXiv:1611.05453](https://arxiv.org/abs/1611.05453).
@@ -17,3 +19,4 @@ Please contact Bradley Kavanagh ([bradkav@gmail.com](mailto:bradkav@gmail.com?su
 - `results`: Numerical results for the perturbed speed distributions and scattering probabilities (as a function of DM mass and operator).
 - `plots`: Plots and illustrations summarising the key results. Mostly from [arXiv:1611.05453](https://arxiv.org/abs/1611.05453).
 - `videos`: Animations showing the time variation of the direct detection rate over the surface of the Earth (and at selected labs).
+
