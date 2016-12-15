@@ -4,7 +4,8 @@
 
 **Skip to the good stuff:** Animations showing the daily modulation can be viewed *in browser* on [FigShare](https://dx.doi.org/10.6084/m9.figshare.c.3575630).
 
-![Earth Map](plots/EarthMap_O1_t=0.png)
+<img src="plots/EarthMap_O1_t=0.png" width="400"><img src="plots/EarthMap_O1_t=12.png" width="400">
+
 
 The `EarthShadow` code is a tool for calculating the impact of Earth-scattering on the distribution of Dark Matter (DM) particles. The code allows you to calculate the speed and velocity distributions of DM at various positions on the Earth  and also helps with the calculation of the average scattering probabilities. We also include tabulated data for DM-nuclear scattering cross sections and various numerical results, plots and animations. Further details about the physics behind the code can be found in [arXiv:1611.05453](https://arxiv.org/abs/1611.05453).
 
