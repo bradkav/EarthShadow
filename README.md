@@ -11,7 +11,7 @@ The `EarthShadow` code is a tool for calculating the impact of Earth-scattering 
 
 The code is still being updated, improved and expanded. We will also add more numerical results as they are produced. 
 
-Please contact Bradley Kavanagh ([bradkav@<span></span>gmail.com](mailto:bradkav@gmail.com?subject=EarthShadow v1.0)) for any questions, problems, bugs and suggestions.
+Please contact Bradley Kavanagh (bradkav@gmail.com) for any questions, problems, bugs and suggestions.
 
 **Version 1.0 Release (17/11/2016):** Initial release.  
 **Update (15/12/2016):** Added some results for Operator 5.
