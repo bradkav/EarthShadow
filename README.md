@@ -13,8 +13,9 @@ The code is still being updated, improved and expanded. We will also add more nu
 
 Please contact Bradley Kavanagh (bradkav@gmail.com) for any questions, problems, bugs and suggestions.
 
+**Update (11/04/2017):** Added some results for the CRESST-II rate + some initial plotting scripts in the scripts folder.
+**Update (15/12/2016):** Added some results for Operator 5.  
 **Version 1.0 Release (17/11/2016):** Initial release.  
-**Update (15/12/2016):** Added some results for Operator 5.
 
 ### Contents
 
@@ -23,6 +24,8 @@ Please contact Bradley Kavanagh (bradkav@gmail.com) for any questions, problems,
 - `results`: Numerical results for the perturbed speed distributions and scattering probabilities (as a function of DM mass and operator).
 - `plots`: Plots and illustrations summarising the key results. Mostly from [arXiv:1611.05453](https://arxiv.org/abs/1611.05453).
 - `videos`: Animations showing the time variation of the direct detection rate over the surface of the Earth (and at selected labs).
+- `scripts`: Scripts for processing and plotting the results of the `EarthShadow` calculations.
+- `manual`: Brief description of the `EarthShadow` package.
 
 ### Citing EarthShadow
 
