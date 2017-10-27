@@ -385,7 +385,7 @@ Cell[BoxData[{
   RowBox[{"mDM", " ", "=", " ", "5"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"iso", " ", "=", " ", "4"}], ";"}], " ", 
+   RowBox[{"iso", " ", "=", " ", "1"}], ";"}], " ", 
   RowBox[{"(*", "Oxygen", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
